@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4 — 17 November 2026
+
+- Added the Nijatva family media helper (`NijatvaMediaIntents`)
+- New "Nijatva apps" section on the Developer screen (Gallery, Photos, Camera, Files)
+
 ## 1.3 — 17 November 2026
 
 - App name is now **Nijatva Dialer**
