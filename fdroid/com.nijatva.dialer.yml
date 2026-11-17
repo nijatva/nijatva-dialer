@@ -1,0 +1,30 @@
+Categories:
+  - Phone & SMS
+License: Apache-2.0
+WebSite: https://github.com/vasudev-work/nijatva-dialer
+SourceCode: https://github.com/vasudev-work/nijatva-dialer
+IssueTracker: https://github.com/vasudev-work/nijatva-dialer/issues
+
+AutoName: Phone
+Summary: Private offline dialer, contacts and SMS app
+Description: |-
+    Fast, private, offline-first dialer, contacts and SMS app built on the AOSP
+    dialer core. No ads, no trackers, no internet permission.
+
+    Speed dial, spam blocking, SMS categories with OTP auto-delete, caller ID
+    popup, app lock, appearance themes and a pure dark AMOLED interface.
+
+RepoType: git
+Repo: https://github.com/vasudev-work/nijatva-dialer.git
+
+Builds:
+  - versionName: '1.3'
+    versionCode: 4
+    commit: v1.3
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: '1.3'
+CurrentVersionCode: 4

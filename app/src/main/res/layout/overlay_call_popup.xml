@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:background="@drawable/bg_bottom_sheet" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <View android:background="@drawable/bg_handle" android:layout_width="40.0dip" android:layout_height="4.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="8.0dip" android:layout_gravity="center_horizontal" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/bg_overlay_header" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@+id/overlay_source" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:text="@string/from_contacts" />
+        <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:tint="#ffffffff" android:id="@+id/overlay_close" android:src="@drawable/ic_close" android:contentDescription="@string/cancel" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="84.0dip" android:layout_height="84.0dip" android:layout_marginTop="14.0dip" android:layout_gravity="center_horizontal">
+        <View android:background="@drawable/bg_avatar_ring_multi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <TextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/overlay_avatar" android:background="@drawable/bg_avatar_blue" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_gravity="center" android:text="#" />
+    </FrameLayout>
+    <TextView android:textSize="19.0sp" android:textStyle="bold" android:textColor="#ff15181c" android:gravity="center" android:id="@+id/overlay_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/unknown_caller" />
+    <LinearLayout android:orientation="horizontal" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip">
+        <TextView android:textSize="13.0sp" android:textColor="#ff5b616a" android:id="@+id/overlay_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        <View android:background="#33888888" android:layout_width="1.0dip" android:layout_height="12.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" />
+        <TextView android:textSize="13.0sp" android:textColor="#ff5b616a" android:id="@+id/overlay_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+        <LinearLayout android:orientation="vertical" android:gravity="center" android:id="@+id/overlayCall" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:background="?android:selectableItemBackground" android:padding="4.0dip">
+            <FrameLayout android:layout_width="50.0dip" android:layout_height="50.0dip">
+                <View android:background="@drawable/bg_action_blue" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:layout_width="22.0dip" android:layout_height="22.0dip" android:tint="#ffffffff" android:src="@drawable/ic_call" android:layout_gravity="center" android:contentDescription="Call" />
+            </FrameLayout>
+            <TextView android:textSize="12.0sp" android:textColor="#ff15181c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="Call" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:gravity="center" android:id="@+id/overlayMsg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:background="?android:selectableItemBackground" android:padding="4.0dip">
+            <FrameLayout android:layout_width="50.0dip" android:layout_height="50.0dip">
+                <View android:background="@drawable/bg_call_green" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:layout_width="22.0dip" android:layout_height="22.0dip" android:tint="#ffffffff" android:src="@drawable/ic_message" android:layout_gravity="center" android:contentDescription="Message" />
+            </FrameLayout>
+            <TextView android:textSize="12.0sp" android:textColor="#ff15181c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="Message" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:gravity="center" android:id="@+id/overlaySpam" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:background="?android:selectableItemBackground" android:padding="4.0dip">
+            <TextView android:textSize="10.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:background="@drawable/bg_spam_ring" android:layout_width="50.0dip" android:layout_height="50.0dip" android:text="SPAM" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff15181c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="Mark Spam" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:gravity="center" android:id="@+id/overlayBlock" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:background="?android:selectableItemBackground" android:padding="4.0dip">
+            <FrameLayout android:layout_width="50.0dip" android:layout_height="50.0dip">
+                <View android:background="@drawable/bg_neutral" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <ImageView android:layout_width="22.0dip" android:layout_height="22.0dip" android:tint="#ffffffff" android:src="@drawable/ic_block" android:layout_gravity="center" android:contentDescription="Block" />
+            </FrameLayout>
+            <TextView android:textSize="12.0sp" android:textColor="#ff15181c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="Block" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/overlayProfile" android:background="@drawable/bg_button_blue" android:stateListAnimator="@null" android:textAllCaps="false" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="14.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="View Profile" />
+</LinearLayout>

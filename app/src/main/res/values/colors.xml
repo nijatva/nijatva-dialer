@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_text">#ff2fbf4f</color>
+    <color name="answer_green">#ff4caf50</color>
+    <color name="dialer_blue">#ff2fbf4f</color>
+    <color name="icon_gray">#ff3c4043</color>
+    <color name="key_circle">#fff0f2f5</color>
+    <color name="missed_red">#ffff5252</color>
+    <color name="brand_green">#ff2fbf4f</color>
+    <color name="screen_bg">#fff7f8fa</color>
+    <color name="search_bg">#ffe7eaee</color>
+    <color name="surface">#ffffffff</color>
+    <color name="text_hint">#ff5b616a</color>
+    <color name="text_main">#ff15181c</color>
+    <color name="input_border">#ffb4bac3</color>
+    <color name="switch_track_off">#ffe0e4e8</color>
+</resources>
