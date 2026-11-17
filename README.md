@@ -15,7 +15,7 @@ A fast, private, offline-first dialer, contacts and SMS app for Android. Built o
 
 **Messages (SMS)**
 - Smart categories: Personal, OTPs, Others
-- Expired OTP auto-delete
+- Expired OTP auto-delete (24 hours)
 - Spam and fraud SMS protection
 - Delivery reports and swipe actions
 
@@ -24,17 +24,15 @@ A fast, private, offline-first dialer, contacts and SMS app for Android. Built o
 - Account filters (SIM, WhatsApp, Google and others)
 - Merge, import/export and favourites
 
-**Appearance**
+**Appearance & About**
 - Theme: System, Dark, Light, Black (AMOLED)
 - Accent colour: Green, Saffron, Indigo
-- Saved on the device only
-
-**About**
 - Developer page with project links
+- **Nijatva apps** — soft links to Gallery, Photos, Camera and Files
 
 ## Download
 
-Grab the latest APK from the [Releases](../../releases) page.
+Grab the latest APK from the [Releases](../../releases) page. It is about 510 KB.
 
 ## Build
 
@@ -49,6 +47,10 @@ Open the project in Android Studio, or build from the command line. Signing conf
 ## Permissions
 
 Nijatva Dialer requests Phone/SMS/Contacts permissions because it *is* your phone and SMS app. It is a default-handler app in the spirit of the AOSP dialer. There is no network access.
+
+## The Nijatva family
+
+The app carries the shared Nijatva signature: the Appearance and Developer screens come from the same source as the other Nijatva apps, so the whole family looks and reads the same. `NijatvaMediaIntents` provides soft hand-offs to the sibling apps — every call is optional, so a missing app never crashes this one.
 
 ## Notes for contributors
 
