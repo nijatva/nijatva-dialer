@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5 — 18 November 2026
+
+- New app icon: bold outlined glyph, centred in the slate rounded square
+- Landing page added under `docs/` (GitHub Pages)
+
 ## 1.4 — 17 November 2026
 
 - Added the Nijatva family media helper (`NijatvaMediaIntents`)
