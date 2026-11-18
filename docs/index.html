@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nijatva Dialer — offline phone, contacts and SMS app for Android</title>
+<meta name="description" content="Nijatva Dialer is a private, offline dialer for Android with T9 search, dual-SIM, spam blocking, contacts and SMS. No internet permission, no accounts, no analytics.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Nijatva Dialer">
+<meta property="og:description" content="Nijatva Dialer is a private, offline dialer for Android with T9 search, dual-SIM, spam blocking, contacts and SMS. No internet permission, no accounts, no analytics.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --teal:#00e0b2; --blue:#3b82f6; --violet:#8b5cf6; --pink:#ec4899;
+    --bg:#000000; --surface:#0d0d0f; --surface2:#141417; --line:#232327;
+    --text:#f2f2f2; --muted:#9a9a9e; --dim:#6e6e73;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  .glow{
+    position:absolute;inset:0 0 auto 0;height:620px;pointer-events:none;
+    background:
+      radial-gradient(620px 300px at 50% -80px, rgba(0,224,178,.16), transparent 70%),
+      radial-gradient(520px 260px at 78% 40px, rgba(139,92,246,.14), transparent 70%),
+      radial-gradient(480px 240px at 22% 20px, rgba(59,130,246,.12), transparent 70%);
+  }
+  header{position:relative;border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;gap:18px;padding:16px 0;position:relative}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.2px}
+  .brand svg{width:26px;height:26px}
+  nav .links{margin-left:auto;display:flex;gap:20px;font-size:14px;color:var(--muted)}
+  nav .links a:hover{color:var(--text)}
+  @media (max-width:640px){nav .links{gap:12px;font-size:13px}}
+
+  .hero{position:relative;padding:74px 0 54px;text-align:center}
+  .mark{width:132px;height:132px;margin:0 auto 26px;display:block;filter:drop-shadow(0 0 34px rgba(0,224,178,.22))}
+  h1{font-size:clamp(32px,6vw,54px);line-height:1.1;margin:0 0 14px;font-weight:300;letter-spacing:-.5px}
+  h1 b{font-weight:600;background:linear-gradient(100deg,var(--teal),var(--blue) 45%,var(--violet) 75%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);font-size:clamp(15px,2.2vw,18px);max-width:660px;margin:0 auto 30px}
+  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:14px;font-size:15px;font-weight:600;transition:transform .15s ease,opacity .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--teal);color:#00110d}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--surface)}
+  .btn-ghost:hover{border-color:#3a3a40}
+  .meta{display:flex;gap:8px 20px;justify-content:center;flex-wrap:wrap;margin-top:26px;color:var(--dim);font-size:13px}
+  .meta span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--teal);display:inline-block}
+
+  section{padding:56px 0;border-top:1px solid var(--line);position:relative}
+  h2{font-size:clamp(21px,3vw,27px);font-weight:600;margin:0 0 8px;letter-spacing:-.2px}
+  .lead{color:var(--muted);margin:0 0 30px;max-width:640px;font-size:15px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:14px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;transition:border-color .15s ease,background .15s ease}
+  .card:hover{border-color:#33333a;background:var(--surface2)}
+  .card .ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;margin-bottom:14px;background:rgba(0,224,178,.1)}
+  .card .ico svg{width:18px;height:18px;stroke:var(--teal);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-size:15px;margin:0 0 6px;font-weight:600}
+  .card p{margin:0;color:var(--muted);font-size:13.5px}
+
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .step b{display:block;font-size:13px;color:var(--teal);margin-bottom:6px}
+  .step p{margin:0;color:var(--muted);font-size:13.5px}
+  code{background:#101013;border:1px solid var(--line);border-radius:8px;padding:2px 7px;font-size:13px;color:#c9f7ea;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  pre{background:#0a0a0c;border:1px solid var(--line);border-radius:14px;padding:16px;overflow:auto;font-size:13px;color:#c9f7ea}
+  pre code{background:none;border:none;padding:0}
+
+  .privacy{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+  .privacy div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;font-size:13.5px;color:var(--muted)}
+  .privacy b{display:block;color:var(--text);font-size:14px;margin-bottom:4px}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 46px;color:var(--dim);font-size:13px}
+  footer .row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  footer a{color:var(--muted)}
+  footer a:hover{color:var(--text)}
+  .sig{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <defs><linearGradient id="ap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e0b2"/><stop offset=".45" stop-color="#3b82f6"/><stop offset=".75" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="url(#ap)" stroke-width="15"
+                  stroke-linecap="round" stroke-dasharray="200 52" transform="rotate(-90 50 50)"/>
+        </svg>
+        Nijatva Dialer
+      </a>
+      <div class="links">
+        <a href="#features">Features</a>
+        <a href="#install">Install</a>
+        <a href="#privacy">Privacy</a>
+        <a href="https://github.com/nijatva/nijatva-dialer">Source</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <svg class="mark" viewBox="0 0 108 108" aria-hidden="true"><defs><linearGradient id="sl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#333B50"/><stop offset="1" stop-color="#232A3A"/></linearGradient></defs><rect x="4" y="4" width="100" height="100" rx="24" fill="url(#sl)"/><rect x="4" y="4" width="100" height="100" rx="24" fill="none" stroke="#3C4459" stroke-width="1.4"/><g transform="translate(22.8,22.8) scale(2.6)"><g fill="none" stroke="#FFFFFF" stroke-width="0.55" stroke-linejoin="round" stroke-linecap="round"><path d="M6.62,10.79c1.44,2.83 3.76,5.14 6.59,6.59l2.2,-2.2c0.27,-0.27 0.67,-0.36 1.02,-0.24 1.12,0.37 2.33,0.57 3.57,0.57 0.55,0 1,0.45 1,1V20c0,0.55 -0.45,1 -1,1 -9.39,0 -17,-7.61 -17,-17 0,-0.55 0.45,-1 1,-1h3.5c0.55,0 1,0.45 1,1 0,1.25 0.2,2.45 0.57,3.57 0.11,0.35 0.03,0.74 -0.25,1.02l-2.2,2.2z"/></g></g></svg>
+    <h1>Your calls, contacts and messages that <b>never leave your phone</b></h1>
+    <p class="sub">A complete phone app: T9 keypad, call log, dual-SIM picker, spam blocking, contacts and SMS in one place. The manifest has no INTERNET permission, so the app cannot send anything anywhere — the operating system would refuse it.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/nijatva/nijatva-dialer/releases/download/v1.4/Nijatva_Dialer_v1.4.apk">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Download APK
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/nijatva/nijatva-dialer">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.55v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.29-1.68-1.29-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.18-1.49 3.14-1.18 3.14-1.18.63 1.59.23 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.8.55A11.5 11.5 0 0 0 23.5 12A11.5 11.5 0 0 0 12 .5"/></svg>
+        View source
+      </a>
+    </div>
+    <div class="meta">
+      <span><i class="dot"></i>Android 5.0+</span>
+      <span><i class="dot"></i>507 KB APK</span>
+      <span><i class="dot"></i>0 trackers</span>
+      <span><i class="dot"></i>no INTERNET permission</span>
+      <span><i class="dot"></i>English</span>
+    </div>
+  </div>
+
+  <section id="ways">
+    <div class="wrap">
+      <h2>One app, three jobs</h2>
+      <p class="lead">Most phones split these into three apps that all want your data. This one keeps them together, and keeps them offline.</p>
+      <div class="grid">
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.2 1z"/></svg></div>
+          <h3>Phone</h3>
+          <p>T9 search, speed dial, call log, dual-SIM picker, spam blocking and a caller ID popup with photo.</p>
+          <p style="margin-top:10px"><a href="https://github.com/nijatva/nijatva-dialer/releases/download/v1.4/Nijatva_Dialer_v1.4.apk" style="color:var(--teal);font-weight:600">Download APK →</a></p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3v4l5-4h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg></div>
+          <h3>Messages</h3>
+          <p>Personal, OTP and Other categories, OTP auto-delete after 24 hours, delivery reports and swipe actions.</p>
+          <p style="margin-top:10px"><a href="#features" style="color:var(--teal);font-weight:600">See the dialer →</a></p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 21c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><path d="M17 5.5a3.5 3.5 0 0 1 0 7"/><path d="M22 21c0-3-1.6-4.8-4-5.3"/></svg></div>
+          <h3>Contacts</h3>
+          <p>Photo avatars, fast search, account filters, merge, import and export, favourites.</p>
+          <p style="margin-top:10px"><a href="#features" style="color:var(--teal);font-weight:600">See the dialer →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>Everything a phone app needs, and nothing that phones home</h2>
+      <p class="lead">Every feature below works with the phone in aeroplane mode. There is no code path that could upload a call log, because the app is not allowed to open a socket.</p>
+      <div class="grid">
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+          <h3>T9 search</h3>
+          <p>Type a number and names match as you go — 5 maps to J, K and L, exactly like the keypad you grew up with.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.2 1z"/></svg></div>
+          <h3>Dual-SIM picker</h3>
+          <p>Every call asks which SIM when two are present, and the call log records which one was used.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg></div>
+          <h3>Spam blocking</h3>
+          <p>140-series telemarketing, private numbers and your own blacklist are rejected before the phone rings.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+          <h3>Caller ID popup</h3>
+          <p>An incoming call shows the contact photo, name and number over any app, with answer and decline.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3>Fake call and flash</h3>
+          <p>A scheduled fake call gets you out of a conversation; flash alert blinks the screen for a silent ring.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3v4l5-4h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg></div>
+          <h3>SMS built in</h3>
+          <p>Threaded messages with Personal, OTP and Other categories, plus delivery reports and swipe actions.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9"/><path d="m17 4 3 3"/><path d="m14 7 3 3"/></svg></div>
+          <h3>OTP auto-delete</h3>
+          <p>One-time passwords are recognised on the device and cleared after 24 hours, so they stop cluttering the inbox.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+          <h3>App lock</h3>
+          <p>A PIN or pattern gate in front of the whole app, checked before any screen loads.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></div>
+          <h3>Appearance</h3>
+          <p>System, Dark, Light or Black (AMOLED) themes with Green, Saffron or Indigo accents.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <h2>Install</h2>
+      <p class="lead">Sideload the signed APK. It updates over older Nijatva Dialer builds signed with the same key.</p>
+      <div class="steps">
+        <div class="step"><b>1 — Download</b><p>Grab the latest APK from the releases page.</p></div>
+        <div class="step"><b>2 — Allow install</b><p>When Android asks, allow your browser or file manager to install unknown apps.</p></div>
+        <div class="step"><b>3 — Set as default</b><p>Open the app and choose it as your phone app so incoming calls reach it.</p></div>
+      </div>
+      <p class="lead" style="margin-top:26px">Prefer a cable? One command:</p>
+      <pre><code>adb install -r Nijatva_Dialer_v1.4.apk</code></pre>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap">
+      <h2>Privacy is a permission, not a promise</h2>
+      <p class="lead">The manifest does not request <code>android.permission.INTERNET</code>. Nothing can be uploaded, because the operating system would refuse the connection.</p>
+      <div class="privacy">
+        <div><b>No INTERNET permission</b>Nothing to send, nowhere to send it.</div>
+        <div><b>No backup extraction</b>allowBackup is false, so app data cannot be pulled with ADB.</div>
+        <div><b>No analytics, no ads</b>No SDKs, no trackers, no third-party libraries.</div>
+        <div><b>No account</b>Nothing to sign up for, nothing to sign in to.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span class="sig">APK always made by Vasudev Dangaya.</span>
+    <span>
+      <a href="https://github.com/nijatva/nijatva-dialer">Repository</a> ·
+      <a href="https://github.com/nijatva/nijatva-dialer/releases">Releases</a> ·
+      <a href="https://nijatva.github.io/">Nijatva suite</a>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
